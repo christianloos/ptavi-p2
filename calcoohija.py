@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import calcoo
 
 class CalculadoraHija(Calculadora):
 
@@ -16,7 +17,7 @@ class CalculadoraHija(Calculadora):
         return op1 / op2
 
 if __name__ == "__main__":
-    Calculadora = CalculadoraHija(op1,op2)
+    CalculadoraHija = CalculadoraHija()
 
     try: 
         operando1 = int(sys.argv[1])
@@ -24,10 +25,17 @@ if __name__ == "__main__":
     except ValueError:
         sys.exit("Error: Non numerical parameters")
 
-    if sys.argv[2] == "multiplica":
-        result = hija.multiply(operando1, operando2)
+    if sys.argv[2] == "suma":
+        result = CalculadoraHija.plus(operando1, operando2)
+    elif sys.argv[2] == "resta":
+        result = CalculadoraHija.minus(operando1, operando2)
+    elif sys.argv[2] == "multiplica":
+        result = CalculadoraHija.multiply(operando1, operando2)
     elif sys.argv[2] == "divide":
-        result = hija.divide(operando1, operando2)
+        try:        
+            result = CalculadoraHija.divide(operando1, operando2)
+        except ZeroDivisionError:
+            sys.exit("Division by zero is not allowed")
 
     else:
         sys.exit('Operación sólo puede ser sumar, restar, multiplicar o dividir')
