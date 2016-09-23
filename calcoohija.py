@@ -4,11 +4,7 @@
 import sys
 import calcoo
 
-class CalculadoraHija(Calculadora):
-
-    def __init__(self, op1, op2):
-        self.op1 = op1
-        self.op2 = op2
+class CalculadoraHija(calcoo.Calculadora):
 
     def multiply(self, op1, op2):
         return op1 * op2
@@ -17,7 +13,7 @@ class CalculadoraHija(Calculadora):
         return op1 / op2
 
 if __name__ == "__main__":
-    CalculadoraHija = CalculadoraHija()
+    calculadora = CalculadoraHija()
 
     try: 
         operando1 = int(sys.argv[1])
@@ -26,14 +22,14 @@ if __name__ == "__main__":
         sys.exit("Error: Non numerical parameters")
 
     if sys.argv[2] == "suma":
-        result = CalculadoraHija.plus(operando1, operando2)
+        result = calculadora.plus(operando1, operando2)
     elif sys.argv[2] == "resta":
-        result = CalculadoraHija.minus(operando1, operando2)
+        result = calculadora.minus(operando1, operando2)
     elif sys.argv[2] == "multiplica":
-        result = CalculadoraHija.multiply(operando1, operando2)
+        result = calculadora.multiply(operando1, operando2)
     elif sys.argv[2] == "divide":
         try:        
-            result = CalculadoraHija.divide(operando1, operando2)
+            result = calculadora.divide(operando1, operando2)
         except ZeroDivisionError:
             sys.exit("Division by zero is not allowed")
 
