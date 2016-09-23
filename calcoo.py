@@ -5,14 +5,10 @@ import sys
 
 class Calculadora():
 
-    def __init__(self, op1, op2):
-        self.op1 = op1
-        self.op2 = op2
-
-    def plus(op1, op2):
+    def plus(self, op1, op2):
         return op1 + op2
 
-    def minus(op1, op2):
+    def minus(self, op1, op2):
         return op1 - op2
 
 if __name__ == "__main__":
