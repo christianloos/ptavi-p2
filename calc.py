@@ -13,14 +13,16 @@ def minus(op1, op2):
     """ Function to substract the operands """
     return op1 - op2
 
+
 def multiply(op1, op2):
     """ Function to multiply the operands"""
     return op1 * op2
-    
+
+
 def divide(op1, op2):
     """ Function to divide the operands"""
     return op1 / op2
-    
+
 if __name__ == "__main__":
     try:
         operando1 = int(sys.argv[1])
@@ -37,8 +39,7 @@ if __name__ == "__main__":
     elif sys.argv[2] == "divide":
         result = divide(operando1, operando2)
     else:
-        sys.exit('Operación sólo puede ser sumar, restar, multiplicar o dividir.')
-        
-        
+        sys.exit('Operación sólo puede ser sumar, restar,'
+                 'multiplicar o dividir.')
 
     print(result)
