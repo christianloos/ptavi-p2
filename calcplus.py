@@ -4,20 +4,19 @@
 import sys
 import calcoohija
 
+
 if __name__ == '__main__':
-    
+
     calculadora = calcoohija.CalculadoraHija()
 
     file = open(sys.argv[1], 'r')
-    
-    lineas = file.readlines()    
-    
+    lineas = file.readlines()
+
     for linea in lineas:
         operandos = linea.split(',')
-        
         operacion = operandos[0]
         operandos = operandos[1:]
-        operandos[-1] = operandos[-1][:-1]        
+        operandos[-1] = operandos[-1][:-1]
         result = int(operandos[0])
         operandos = operandos[1:]
 
@@ -33,8 +32,7 @@ if __name__ == '__main__':
                     result = calculadora.divide(result, int(operando))
                 except ZeroDivisionError:
                     sys.exit("Division by zero is not allowed")
-                    
             else:
-                sys.exit('Operación sólo puede ser sumar, restar, multiplicar o dividir')
-        
-        print(result)
+                sys.exit('Operación sólo puede ser sumar, restar,'
+                         'multiplicar o dividir')
+            print(result)
