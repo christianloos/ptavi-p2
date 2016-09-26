@@ -7,13 +7,11 @@ import csv
 
 
 if __name__ == '__main__':
-    
     calculadora = calcoohija.CalculadoraHija()
 
     with open(sys.argv[1]) as fichero:
-    
         datos = csv.reader(fichero)
-    
+
         for operandos in datos:
             operacion = operandos[0]
             operandos = operandos[1:]
@@ -32,8 +30,9 @@ if __name__ == '__main__':
                         result = calculadora.divide(result, int(operando))
                     except ZeroDivisionError:
                         sys.exit("Division by zero is not allowed")
-                    
+
                 else:
-                    sys.exit('Operación sólo puede ser sumar, restar, multiplicar o dividir')
-        
+                    sys.exit('Operación sólo puede ser sumar, restar,'
+                             'multiplicar o dividir')
+
             print(result)
