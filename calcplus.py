@@ -6,23 +6,35 @@ import calcoohija
 
 if __name__ == '__main__':
     
-    fichero = open('operaciones', 'r')
-    
-    lineas = fichero.readlines()
-    
     calculadora = calcoohija.CalculadoraHija()
+
+    file = open(sys.argv[1], 'r')
     
-    diccionario = {'suma': calculadora.plus, 'resta': calculadora.minus, 'multiplica': calculadora.multiply, 'divide': calculadora.divide}
+    lineas = file.readlines()    
     
     for linea in lineas:
-    
-        elementos_lista = linea.split(',') #separamos la lista mediante comas
-        operandos = elementos_lista [1:] #seleccionamos los operandos
-        operandos[-1] = operandos[-1][:-1] #eliminamos \n
-        operacion = elementos_lista[0] #seleccionamos la operacion
+        operandos = linea.split(',')
         
+        operacion = operandos[0]
+        operandos = operandos[1:]
+        operandos[-1] = operandos[-1][:-1]        
+        result = int(operandos[0])
+        operandos = operandos[1:]
+
+        for operando in operandos:
+            if operacion == "suma":
+                result = calculadora.plus(result, int(operando))
+            elif operacion == "resta":
+                result = calculadora.minus(result, int(operando))
+            elif operacion == "multiplica":
+                result = calculadora.multiply(result, int(operando))
+            elif operacion == "divide":
+                try:
+                    result = calculadora.divide(result, int(operando))
+                except ZeroDivisionError:
+                    sys.exit("Division by zero is not allowed")
+                    
+            else:
+                sys.exit('Operación sólo puede ser sumar, restar, multiplicar o dividir')
         
-        
-        
-        
-        
+        print(result)
