@@ -9,8 +9,8 @@ if __name__ == '__main__':
 
     calculadora = calcoohija.CalculadoraHija()
 
-    file = open(sys.argv[1], 'r')
-    lineas = file.readlines()
+    fichero = open(sys.argv[1], 'r')
+    lineas = fichero.readlines()
 
     for linea in lineas:
         operandos = linea.split(',')
@@ -35,4 +35,4 @@ if __name__ == '__main__':
             else:
                 sys.exit('Operación sólo puede ser sumar, restar,'
                          'multiplicar o dividir')
-            print(result)
+        print(result)
